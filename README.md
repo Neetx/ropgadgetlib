@@ -48,6 +48,50 @@ Output:
 [{'address': 4195344, 'mnemonic': 'call', 'op_str': 'rax'}]
 ```
 
+### Output example
+
+```bash
+ ./RopGadgetExtractor.py ./vuln 
+0x400410 : call rax
+0x40040e : je 0x400412 ; call rax
+0x40040c : test eax, eax ; je 0x400412 ; call rax
+0x40040b : test rax, rax ; je 0x400412 ; call rax
+0x400409 : and byte ptr [rax], al ; test rax, rax ; je 0x400412 ; call rax
+0x400416 : ret 
+0x400413 : add esp, 8 ; ret 
+0x400412 : add rsp, 8 ; ret 
+0x400410 : call rax ; add rsp, 8 ; ret 
+0x40040e : je 0x400412 ; call rax ; add rsp, 8 ; ret 
+0x40040d : sal byte ptr [rdx + rax - 1], 0xd0 ; add rsp, 8 ; ret 
+0x40040c : test eax, eax ; je 0x400412 ; call rax ; add rsp, 8 ; ret 
+
+   .
+   .
+   .
+
+0x4005cd : pop rsp ; pop r13 ; pop r14 ; pop r15 ; ret 
+0x4005cc : pop r12 ; pop r13 ; pop r14 ; pop r15 ; ret 
+0x4005cb : pop rbp ; pop r12 ; pop r13 ; pop r14 ; pop r15 ; ret 
+0x4005ca : pop rbx ; pop rbp ; pop r12 ; pop r13 ; pop r14 ; pop r15 ; ret 
+0x4005e1 : ret 
+0x4005e0 : ret 
+0x4005df : add bl, dh ; ret 
+0x4005de : add byte ptr [rax], al ; ret 
+0x4005dd : add byte ptr [rax], al ; add bl, dh ; ret 
+0x4005dc : add byte ptr [rax], al ; add byte ptr [rax], al ; ret 
+0x4005db : add byte ptr [rax], al ; add byte ptr [rax], al ; add bl, dh ; ret 
+0x4005da : test byte ptr [rax], al ; add byte ptr [rax], al ; add byte ptr [rax], al ; ret 
+0x4005d8 : nop dword ptr [rax + rax] ; ret 
+0x4005d7 : nop dword ptr cs:[rax + rax] ; ret 
+0x4005ec : ret 
+0x4005e9 : add esp, 8 ; ret 
+0x4005e8 : add rsp, 8 ; ret 
+0x4005e5 : sub esp, 8 ; add rsp, 8 ; ret 
+0x4005e4 : sub rsp, 8 ; add rsp, 8 ; ret 
+0x4005e2 : add byte ptr [rax], al ; sub rsp, 8 ; add rsp, 8 ; ret 
+
+Gadget found : 84
+```
 ### Contacts
 
 [neetx](neetx@protonmail.com)
