@@ -122,3 +122,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+gadget_env/
+
+ropgadgetlib/.gdb_history
+
+ropgadgetlib/vuln
+
+..gitignore.swp
