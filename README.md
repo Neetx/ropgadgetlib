@@ -13,14 +13,39 @@ In the future I will support x86, arm and mips and a setup.py to have the right 
 git clone https://github.com/Neetx/ropgadgetlib
 cd ropgadgetlib
 pip install -r requirements.txt
+python setup.py install
 ```
 
 ### Basic usage
 
 For now it gets ret, syscall and call rax gadget.
 
+ropgadgetextractor as a tool
+
 ```bash
 ./RopGadgetExtractor.py <FILE_NAME>
+```
+
+**ropgadgetlib**
+```python
+from ropgadgetlib.RopGadgetExtractor import *
+
+rop = RopGadgetExtractor(sys.argv[1])
+gadgets = rop.get_gadgets(10)
+print_gadgets(gadgets)
+```
+
+"gadgets" is a list of Gadget class
+```python
+first_gadget = gadgets[0]
+print(hex(first_gadget.address))
+print(first_gadget.instructions)
+```
+
+Output:
+```python
+'0x400410'
+[{'address': 4195344, 'mnemonic': 'call', 'op_str': 'rax'}]
 ```
 
 ### Contacts

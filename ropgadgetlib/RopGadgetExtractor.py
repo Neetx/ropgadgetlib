@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 """
 Copyright 2021 Neetx
 This file is part of ropgadgetlib.
@@ -12,8 +14,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with ropgadgetlib.  If not, see <http://www.gnu.org/licenses/>.
 """
-
-#!/usr/bin/python3
 
 from capstone import *
 import sys
