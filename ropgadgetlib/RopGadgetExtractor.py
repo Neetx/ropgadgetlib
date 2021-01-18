@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from capstone import *
 import sys
 
