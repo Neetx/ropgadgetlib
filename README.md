@@ -35,7 +35,7 @@ gadgets = rop.get_gadgets(10)
 print_gadgets(gadgets)
 ```
 
-"gadgets" is a list of Gadget class
+"gadgets" is a list of Gadget objects
 ```python
 first_gadget = gadgets[0]
 print(hex(first_gadget.address))
