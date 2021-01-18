@@ -17,6 +17,8 @@ pip install -r requirements.txt
 
 ### Basic usage
 
+For now it gets ret, syscall and call rax gadget.
+
 ```bash
 ./RopGadgetExtractor.py <FILE_NAME>
 ```
